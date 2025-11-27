@@ -1,26 +1,3 @@
-let copy link
-git clone
-cp npx @angular/cli@20 new practice --ssr=false --route=false
-y n n npx ng serve - cd practice - npx ng serve
-browser: localhost:4200 cp practice > src > app.html
-
->app.html = <h1> Practice </h1> 
->source_control >msg = 'tsk1 cmplt' > cmmt > ... > push
-
->cp > cd practice > npx ng g service shop-service 
-> app > new folder ="models" > new file="shop-item.ts"
-shop-items.ts = export interface ShopItem{ id:string; modelName: string; price: number; isAvailable: boolean;}
-shop-service.ts > export class ShopService { items: ShopItem[] = [ { id:'', modelName: 'Kingston', price:10, isAvailable: true},
-{ id:'', modelName: 'modelTwo', price: 20, isAvailable: false}]
-google> guidegenerator.com > 2> pst>shop-service.ts>id:''>pst - id 
-> source_control> msg='tsk2.1'>push
-
-shop-service.ts > getItems(){return this.items;}
->source_control> msg='tsk2.2'>push
-
-cp > npm install uuid > shop-service.ts > import{v4} from 'uuid';>addItem(tem: ShopItem){item.id=v4();this.items.push(item);return item.id;}
->source_control> msg='tsk2.3'>push
-
 models>new file="item-filter.ts">export interface ItemFilter{model?: string | null;
 priceFrom?: number | null; priceTo?: number | null;}
 >shop-service.ts > filterItems(filter: ItemFilter){ let result = this.items; if(filter.model !== null && filter.model !== undefined && filter.model !== ''){
@@ -53,3 +30,11 @@ cp > npx ng g c usb-search >usb-search.html= <h3>usb flash drive search </h3> >a
 >app.html >  <app-add-item></app-add-item>
 >app 
 >add-item.html > <h3> Add usb flash drive </h3>
+>add-item.ts >imports: [ReactiveFormsModule] >import {ReactiveFormsModule} from '@angular/forms'; export class AddItem{
+ form= new formGroup({ modelName new formControl('',[ validators.required, validators.minLength(3), validators.maxLength(50)]), price: new formControl<number | null>(null, [validators.required, validators.min(8)]), isAailable new formControl(false)  });
+>add-item.html > <form [formGroup]="form"> <div class="form-item"><input type="text" formControlName="modelName" placeholder="Model Name"/></div>
+<div class="form-item"><input type="number" formControlName="price" placeholder="price"/></div>
+<div class="form-item"><label for="chk-isAvailable">is available</label><input type="checkbox" formControlName="isAvailable" id="chk-isAvailable"/></div>
+<div class="form-item"><button type="submit">Add</button></div>
+>add-item.css > .form-item{padding-bottom:5px;}
+>source-control>msg='tsk4.1'<push
